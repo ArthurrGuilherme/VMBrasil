@@ -1,0 +1,97 @@
+.nav-link {
+    color: white !important;
+    font-weight: bold !important;
+}
+/* Animação suave ao carregar */
+.fade-in-top {
+  animation: fadeInTop 1s ease-out;
+}
+
+@keyframes fadeInTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Animação desktop apenas */
+@media (min-width: 992px) {
+  .fade-in-top {
+    animation: fadeInTop 1s ease-out;
+  }
+  .nav-link.nav-hover {
+    color: white;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link.nav-hover::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
+  }
+
+  .nav-link.nav-hover:hover {
+    color: #e0e0e0;
+  }
+
+  .nav-link.nav-hover:hover::after {
+    width: 100%;
+  }
+
+  .logo-img {
+    width: 100%;
+    transition: transform 0.4s ease;
+  }
+
+  .logo-container:hover .logo-img {
+    transform: scale(1.05);
+  }
+}
+
+/* Estilo mobile */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background-color: var(--color-primary);
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  #logo-container {
+    width: 70% !important;
+  }
+
+  .navbar-nav .nav-item {
+    margin-bottom: 0.75rem;
+  }
+
+  .nav-link {
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .nav-link:hover {
+    color: #e0e0e0;
+  }
+
+  /* Remove hover underline e zoom logo no mobile */
+  .nav-hover::after,
+  .logo-container:hover .logo-img {
+    all: unset;
+  }
+
+  .logo-img {
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+  }
+}
