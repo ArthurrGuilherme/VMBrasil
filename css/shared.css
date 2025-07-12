@@ -1,8 +1,10 @@
+/* ESTILO GERAL DOS LINKS*/
 .nav-link {
-    color: white !important;
-    font-weight: bold !important;
+  color: white !important;
+  font-weight: bold !important;
 }
-/* Animação suave ao carregar */
+
+/* ANIMAÇÃO DE ENTRADA NO HEADER */
 .fade-in-top {
   animation: fadeInTop 1s ease-out;
 }
@@ -17,11 +19,13 @@
     transform: translateY(0);
   }
 }
-/* Animação desktop apenas */
+
+/*ESTILO PARA DESKTOP (>= 992px)*/
 @media (min-width: 992px) {
   .fade-in-top {
     animation: fadeInTop 1s ease-out;
   }
+
   .nav-link.nav-hover {
     color: white;
     position: relative;
@@ -57,41 +61,130 @@
   }
 }
 
-/* Estilo mobile */
+/* ESTILO MOBILE (<= 991.98px)*/
 @media (max-width: 991.98px) {
-  .navbar-collapse {
-    background-color: var(--color-primary);
-    padding: 1rem;
-    border-radius: 0.5rem;
-  }
-  
+  /* LOGO AJUSTADO */
   #logo-container {
     width: 70% !important;
   }
-
-  .navbar-nav .nav-item {
-    margin-bottom: 0.75rem;
+  #navbarNav {
+    justify-content: center !important;
   }
-
-  .nav-link {
-    color: white;
-    font-size: 1.25rem;
-    font-weight: 500;
-  }
-
-  .nav-link:hover {
-    color: #e0e0e0;
-  }
-
-  /* Remove hover underline e zoom logo no mobile */
-  .nav-hover::after,
-  .logo-container:hover .logo-img {
-    all: unset;
-  }
-
   .logo-img {
     width: 80%;
     margin: 0 auto;
     display: block;
   }
+
+  .logo-container:hover .logo-img,
+  .nav-hover::after {
+    all: unset;
+  }
+
+  /* MENU MOBILE COMO SIDEBAR LATERAL ESQUERDA */
+  .navbar-collapse {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100vh;
+    background-color: var(--color-primary);
+    z-index: 1000;
+    transition: left 0.4s ease;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-collapse.show {
+    left: 0;
+  }
+
+  /* BLOQUEAR ROLAGEM DO FUNDO */
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  /* NAVEGAÇÃO NO MOBILE */
+  #navbar-nav {
+    justify-content: center !important;
+    width: 100%;
+  }
+
+  .navbar-nav {
+    width: 100%;
+  }
+
+  .navbar-nav .nav-item {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  .navbar-nav .nav-link {
+    display: block;
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease;
+  }
+
+  .navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* BOTÃO HAMBÚRGUER CUSTOMIZADO*/
+.custom-toggler {
+  border: none;
+  background: #daa520 !important; /* fundo dourado */
+  width: 40px;
+  height: 40px;
+  position: relative;
+  z-index: 1001;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.toggler-line {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background-color: #fff; /* linhas brancas */
+  position: absolute;
+  left: 8px;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+
+.toggler-line.top {
+  top: 10px;
+}
+
+.toggler-line.middle {
+  top: 18px;
+}
+
+.toggler-line.bottom {
+  top: 26px;
+}
+
+/* ANIMAÇÃO AO ABRIR MENU */
+.custom-toggler.open .top {
+  transform: rotate(45deg);
+  top: 18px;
+}
+
+.custom-toggler.open .middle {
+  opacity: 0;
+}
+
+.custom-toggler.open .bottom {
+  transform: rotate(-45deg);
+  top: 18px;
 }
