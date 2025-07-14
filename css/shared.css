@@ -1,190 +1,219 @@
-/* ESTILO GERAL DOS LINKS*/
-.nav-link {
-  color: white !important;
-  font-weight: bold !important;
-}
+ /* ============================
+       Estilo geral dos links
+    ============================ */
+    .nav-link {
+      color: white !important;
+      font-weight: bold !important;
+    }
 
-/* ANIMAÇÃO DE ENTRADA NO HEADER */
-.fade-in-top {
-  animation: fadeInTop 1s ease-out;
-}
+    /* Animação suave ao carregar o header */
+    .fade-in-top {
+      animation: fadeInTop 1s ease-out;
+    }
+    @keyframes fadeInTop {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-@keyframes fadeInTop {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+    /* ============================
+       Estilos para desktop (>=992px)
+    ============================ */
+    @media (min-width: 992px) {
+      .fade-in-top {
+        animation: fadeInTop 1s ease-out;
+      }
 
-/*ESTILO PARA DESKTOP (>= 992px)*/
-@media (min-width: 992px) {
-  .fade-in-top {
-    animation: fadeInTop 1s ease-out;
-  }
+      .nav-link.nav-hover {
+        color: #daa520;
+        position: relative;
+        transition: color 0.3s ease;
+      }
 
-  .nav-link.nav-hover {
-    color: white;
-    position: relative;
-    transition: color 0.3s ease;
-  }
+      .nav-link.nav-hover::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0;
+        height: 2px;
+        background: #daa520;
+        transition: width 0.3s ease;
+      }
 
-  .nav-link.nav-hover::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 0;
-    height: 2px;
-    background: white;
-    transition: width 0.3s ease;
-  }
+      .nav-link.nav-hover:hover {
+        color: #daa520;
+      }
 
-  .nav-link.nav-hover:hover {
-    color: #e0e0e0;
-  }
+      .nav-link.nav-hover:hover::after {
+        width: 100%;
+      }
 
-  .nav-link.nav-hover:hover::after {
-    width: 100%;
-  }
+      .logo-img {
+        width: 100%;
+        transition: transform 0.4s ease;
+      }
 
-  .logo-img {
-    width: 100%;
-    transition: transform 0.4s ease;
-  }
+      .logo-container:hover .logo-img {
+        transform: scale(1.05);
+      }
+    }
 
-  .logo-container:hover .logo-img {
-    transform: scale(1.05);
-  }
-}
+    /* ============================
+       Estilos mobile (<=991.98px)
+    ============================ */
+    @media (max-width: 991.98px) {
+      /* Ajuste do container do logo */
+      #logo-container {
+        width: 70% !important;
+      }
+      /* Ajuste da largura do navbar */
+      #navbarNav {
+        justify-content: center !important;
+        width: 75% !important;
+      }
+      .logo-img {
+        width: 80%;
+        margin: 0 auto;
+        display: block;
+      }
 
-/* ESTILO MOBILE (<= 991.98px)*/
-@media (max-width: 991.98px) {
-  /* LOGO AJUSTADO */
-  #logo-container {
-    width: 70% !important;
-  }
-  #navbarNav {
-    justify-content: center !important;
-  }
-  .logo-img {
-    width: 80%;
-    margin: 0 auto;
-    display: block;
-  }
+      /* Remove efeitos de hover no mobile */
+      .logo-container:hover .logo-img,
+      .nav-hover::after {
+        all: unset;
+      }
 
-  .logo-container:hover .logo-img,
-  .nav-hover::after {
-    all: unset;
-  }
+      /* Sidebar lateral para menu mobile */
+      .navbar-collapse {
+        position: fixed;
+        top: 0;
+        left: -100%; /* Escondido inicialmente */
+        width: 50%;
+        height: 100vh;
+        background-color: var(--color-primary);
+        z-index: 1000;
+        transition: left 0.15s ease; /* transição rápida e suave */
+        padding: 2rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
 
-  /* MENU MOBILE COMO SIDEBAR LATERAL ESQUERDA */
-  .navbar-collapse {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 50%;
-    height: 100vh;
-    background-color: var(--color-primary);
-    z-index: 1000;
-    transition: left 0.4s ease;
-    padding: 2rem 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
+      /* Sidebar visível quando a classe show é adicionada */
+      .navbar-collapse.show {
+        left: 0;
+      }
 
-  .navbar-collapse.show {
-    left: 0;
-  }
+      /* Bloqueia rolagem do body quando o menu estiver aberto */
+      body.menu-open {
+        overflow: hidden;
+      }
 
-  /* BLOQUEAR ROLAGEM DO FUNDO */
-  body.menu-open {
-    overflow: hidden;
-  }
+      /* Navegação mobile */
+      #navbar-nav {
+        justify-content: center !important;
+        width: 100%;
+      }
 
-  /* NAVEGAÇÃO NO MOBILE */
-  #navbar-nav {
-    justify-content: center !important;
-    width: 100%;
-  }
+      .navbar-nav {
+        width: 100%;
+      }
 
-  .navbar-nav {
-    width: 100%;
-  }
+      .navbar-nav .nav-item {
+        width: 100%;
+      }
 
-  .navbar-nav .nav-item {
-    margin-bottom: 1rem;
-    width: 100%;
-  }
+      .navbar-nav .nav-link {
+        display: block;
+        font-size: 1.2rem;
+        width: 100%;
+        border-radius: 0.5rem;
+        transition: background-color 0.2s ease;
+      }
+    }
 
-  .navbar-nav .nav-link {
-    display: block;
-    font-size: 1.2rem;
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border-radius: 0.5rem;
-    transition: background-color 0.2s ease;
-  }
+    /* ============================
+       Botão hambúrguer customizado
+    ============================ */
+    .custom-toggler {
+      border: none;
+      background: #daa520 !important; /* fundo dourado */
+      width: 40px;
+      height: 40px;
+      position: relative;
+      z-index: 1001;
+      padding: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      /* Transição sincronizada com o restante */
+      transition: background-color 0.15s ease;
+    }
 
-  .navbar-nav .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-}
+    /* Linhas do hambúrguer */
+    .toggler-line {
+      display: block;
+      width: 24px;
+      height: 3px;
+      background-color: #fff; /* linhas brancas */
+      position: absolute;
+      left: 8px;
+      transition: all 0.15s ease; /* transição rápida e sincronizada */
+      border-radius: 5px;
+    }
 
-/* BOTÃO HAMBÚRGUER CUSTOMIZADO*/
-.custom-toggler {
-  border: none;
-  background: #daa520 !important; /* fundo dourado */
-  width: 40px;
-  height: 40px;
-  position: relative;
-  z-index: 1001;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  padding: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-}
+    .toggler-line.top {
+      top: 10px;
+    }
 
-.toggler-line {
-  display: block;
-  width: 24px;
-  height: 3px;
-  background-color: #fff; /* linhas brancas */
-  position: absolute;
-  left: 8px;
-  transition: all 0.3s ease;
-  border-radius: 5px;
-}
+    .toggler-line.middle {
+      top: 18px;
+    }
 
-.toggler-line.top {
-  top: 10px;
-}
+    .toggler-line.bottom {
+      top: 26px;
+    }
 
-.toggler-line.middle {
-  top: 18px;
-}
+    /* Animação do botão ao abrir o menu */
+    .custom-toggler.open .top {
+      transform: rotate(45deg);
+      top: 18px;
+    }
 
-.toggler-line.bottom {
-  top: 26px;
-}
+    .custom-toggler.open .middle {
+      opacity: 0;
+    }
 
-/* ANIMAÇÃO AO ABRIR MENU */
-.custom-toggler.open .top {
-  transform: rotate(45deg);
-  top: 18px;
-}
+    .custom-toggler.open .bottom {
+      transform: rotate(-45deg);
+      top: 18px;
+    }
 
-.custom-toggler.open .middle {
-  opacity: 0;
-}
+    /* ============================
+       Overlay para escurecer o fundo
+    ============================ */
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5); /* preto semi-transparente */
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.15s ease, visibility 0.15s ease; /* transição rápida e sincronizada */
+      z-index: 999; /* abaixo do menu lateral */
+    }
 
-.custom-toggler.open .bottom {
-  transform: rotate(-45deg);
-  top: 18px;
-}
+    /* Overlay visível */
+    #overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
